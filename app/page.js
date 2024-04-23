@@ -24,6 +24,12 @@ const HomePage = () => {
         <Link href="/week-7">
           <div className='text-lg hover:text-green-400 hover:underline'>Week 7 Assignment</div>
         </Link>
+        <Link href="/week-8">
+          <div className='text-lg hover:text-green-400 hover:underline'>Week 8 Assignment</div>
+        </Link>
+        <Link href="/week-10">
+          <div className='text-lg hover:text-green-400 hover:underline'>Week 10 Assignment</div>
+        </Link>
       {/*ok this is comment */}
       </div>
     </main>

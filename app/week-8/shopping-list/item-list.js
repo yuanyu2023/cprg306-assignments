@@ -1,15 +1,17 @@
 
 import React, { useState, useEffect } from "react";
+import Item from "./item";
 
 const ItemsArray = require('./items.json');
 console.log(ItemsArray);
 
-const ItemList = () => {
+const ItemList = ({ items, onItemSelect }) => {
   const [sortBy, setSortBy] = useState('name');
+  const [sortedItems, setSortedItems] = useState([]);
 
   useEffect(() => {
     sortItems();
-  }, [sortBy]);
+  }, [sortBy, items]);
 
   const sortItems = () => {
     ItemsArray.sort((a, b) => {
@@ -33,7 +35,7 @@ const ItemList = () => {
       
       <ul className='list-none'>
         {ItemsArray.map((item, index) => (
-          <li key={index} className='p-2 m-4 bg-slate-900 max-w-1/2'>
+          <li Item key={index} item={item} onSelect={onItemSelect}  className='p-2 m-4 bg-slate-900 max-w-1/2'>
             <h2 className='text-xl font-bold'>{`${item.name}`}</h2>
             <div className='text-sm'>
               Buy {`${item.quantity}`} in {`${item.category}`}
@@ -42,6 +44,7 @@ const ItemList = () => {
         ))}
       </ul>
     </div>
+    
   );
 }
 

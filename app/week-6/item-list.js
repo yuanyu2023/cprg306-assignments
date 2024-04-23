@@ -4,14 +4,16 @@ import React, { useState, useEffect } from "react";
 const ItemsArray = require('./items.json');
 console.log(ItemsArray);
 
-const ItemList = () => {
+const ItemList = ({ items }) => {
   const [sortBy, setSortBy] = useState('name');
+  const [sortedItems, setSortedItems] = useState([]);
 
   useEffect(() => {
     sortItems();
-  }, [sortBy]);
+  }, [sortBy, items]);
 
   const sortItems = () => {
+    const sorted = [...items];
     ItemsArray.sort((a, b) => {
       if (sortBy === "category") {
         return a.name.localeCompare(b.name);
@@ -19,6 +21,7 @@ const ItemList = () => {
         return a.category.localeCompare(b.category);
       }
     });
+    setSortedItems(sorted);
   };
 
   return (    
